@@ -1,10 +1,10 @@
 'use strict';
+/// <reference path="typings/tds.d.ts"/>
+// import os = require("os");
 var chalk = require("chalk");
-/** @todo or \n */
-// const NEWLINE_CHAR = os.EOL;
+/** @todo \n of os.EOL*/
 var NEWLINE_CHAR = "\n";
 var REGEXP_LIKE = /^\/(.+)\/((g|m|i)*)$/i;
-;
 /** helps */
 /**
  * Проверка похожа ли строка на регулярное выражение
@@ -15,6 +15,7 @@ var REGEXP_LIKE = /^\/(.+)\/((g|m|i)*)$/i;
 function lookLikeRegexp(str) {
     return REGEXP_LIKE.test(str);
 }
+exports.lookLikeRegexp = lookLikeRegexp;
 /**
  * Разбор строки на регулярное выражение
  * @param  {string}       str
@@ -30,18 +31,19 @@ function parseRegexp(str) {
     var flags = matches[2] ? matches[2] : "";
     return new RegExp(pattern, flags);
 }
+exports.parseRegexp = parseRegexp;
 ;
 /**
  * Grep string
- * @param  {string}           data                   - input string
- * @param  {string}           pattern                - search pattern
- * @param  {string[]|boolean} [highlight=false]      - highlight results
+ * @param  {string}           data               - input string
+ * @param  {string}           pattern            - search pattern
+ * @param  {string[]|boolean} [highlight=false]  - highlight options for `chalk`
  *
- * @return {string}                                  - output string
+ * @return {string}                              - output string
  */
 function grep(data, pattern, highlight) {
     if (highlight === void 0) { highlight = false; }
-    /** Нет патерна */
+    /** Нет паттерна */
     if (pattern === "") {
         return data;
     }
@@ -80,5 +82,6 @@ function grep(data, pattern, highlight) {
         .join(NEWLINE_CHAR);
     return outData;
 }
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.default = grep;
 ;
-module.exports = grep;

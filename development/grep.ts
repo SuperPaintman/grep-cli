@@ -1,20 +1,13 @@
 'use strict';
 /// <reference path="typings/tds.d.ts"/>
 
-import os = require("os");
+// import os = require("os");
 
 import chalk = require("chalk");
 
-/** @todo or \n */
-// const NEWLINE_CHAR = os.EOL;
+/** @todo \n of os.EOL*/
 const NEWLINE_CHAR = "\n";
 const REGEXP_LIKE = /^\/(.+)\/((g|m|i)*)$/i;
-
-
-interface ParsedRegexp {
-    pattern: string,
-    flags: string
-};
 
 /** helps */
 /**
@@ -23,7 +16,7 @@ interface ParsedRegexp {
  * 
  * @return {boolean}
  */
-function lookLikeRegexp(str: string): boolean {
+export function lookLikeRegexp(str: string): boolean {
     return REGEXP_LIKE.test(str);
 }
 
@@ -33,7 +26,7 @@ function lookLikeRegexp(str: string): boolean {
  * 
  * @return {RegExp}
  */
-function parseRegexp(str: string): RegExp {
+export function parseRegexp(str: string): RegExp {
     if (!lookLikeRegexp(str)) {
         throw new Error("The string doesn't look like a RegExp");
     }
@@ -48,14 +41,14 @@ function parseRegexp(str: string): RegExp {
 
 /**
  * Grep string
- * @param  {string}           data                   - input string
- * @param  {string}           pattern                - search pattern
- * @param  {string[]|boolean} [highlight=false]      - highlight results
+ * @param  {string}           data               - input string
+ * @param  {string}           pattern            - search pattern
+ * @param  {string[]|boolean} [highlight=false]  - highlight options for `chalk`
  * 
- * @return {string}                                  - output string
+ * @return {string}                              - output string
  */
-function grep(data: string, pattern: string, highlight: any = false): string {
-    /** Нет патерна */
+export default function grep(data: string, pattern: string, highlight: any = false): string {
+    /** Нет паттерна */
     if (pattern === "") { return data };
 
     let regexp;
@@ -99,5 +92,3 @@ function grep(data: string, pattern: string, highlight: any = false): string {
 
     return outData;
 };
-
-export = grep;

@@ -4,14 +4,14 @@
 
 import os = require("os");
 
-import grep = require("../grep");
+import grep from "../grep";
 
 const argv = process.argv.slice(2);
 const pattern = argv[0];
 
 process.stdin.on('data', (data) => {
-    data = data.toString("utf8")
-    
+    data = data.toString("utf8");
+
     const gdata = grep(data, pattern, [
         'cyan',
         'bold'
