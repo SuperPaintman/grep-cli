@@ -17,7 +17,7 @@ describe("parseRegexp(str)", function () {
     it("should returns valid RegExp", function () {
         assert.deepEqual(g.parseRegexp("/a/"), /a/);
         assert.deepEqual(g.parseRegexp("/[a-z]/"), /[a-z]/);
-        assert.deepEqual(g.parseRegexp("/^\/(.+)\/((g|m|i)*)$/i"), /^\/(.+)\/((g|m|i)*)$/i);
+        assert.deepEqual(g.parseRegexp("/^\\/(.+)\\/((g|m|i)*)$/i"), /^\/(.+)\/((g|m|i)*)$/i);
     });
     it("shoild throw error when pattern not a RegExp like", function () {
         assert.throws(function () {
@@ -48,10 +48,10 @@ describe("parseRegexp(str, flags)", function () {
     it("should returns valid RegExp", function () {
         assert.deepEqual(g.parseRegexp("/a/", "g"), /a/g);
         assert.deepEqual(g.parseRegexp("/[a-z]/", "gi"), /[a-z]/gi);
-        assert.deepEqual(g.parseRegexp("/^\/(.+)\/((g|m|i)*)$/i", "g"), /^\/(.+)\/((g|m|i)*)$/g);
-        assert.deepEqual(g.parseRegexp("" + /a/, "g"), /a/g);
-        assert.deepEqual(g.parseRegexp("" + /[a-z]/, "gi"), /[a-z]/gi);
-        assert.deepEqual(g.parseRegexp("" + /^\/(.+)\/((g|m|i)*)$/i, "g"), /^\/(.+)\/((g|m|i)*)$/g);
+        assert.deepEqual(g.parseRegexp("/^\\/(.+)\\/((g|m|i)*)$/i", "g"), /^\/(.+)\/((g|m|i)*)$/g);
+        assert.deepEqual(g.parseRegexp("" + (/a/), "g"), /a/g);
+        assert.deepEqual(g.parseRegexp("" + (/[a-z]/), "gi"), /[a-z]/gi);
+        assert.deepEqual(g.parseRegexp("" + (/^(.+)((g|m|i)*)$/i), "g"), /^(.+)((g|m|i)*)$/g);
     });
 });
 describe("grep(data, pattern)", function () {
