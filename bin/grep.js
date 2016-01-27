@@ -19,17 +19,24 @@ exports.lookLikeRegexp = lookLikeRegexp;
 /**
  * Разбор строки на регулярное выражение
  * @param  {string}       str
+ * @param  {string}       flags
  *
  * @return {RegExp}
  */
-function parseRegexp(str) {
+function parseRegexp(str, flags) {
     if (!lookLikeRegexp(str)) {
         throw new Error("The string doesn't look like a RegExp");
     }
     var matches = str.match(REGEXP_LIKE);
-    var pattern = matches[1] ? matches[1] : "";
-    var flags = matches[2] ? matches[2] : "";
-    return new RegExp(pattern, flags);
+    var curPattern = matches[1] ? matches[1] : "";
+    var curFlags;
+    if (flags) {
+        curFlags = flags;
+    }
+    else {
+        curFlags = matches[2] ? matches[2] : "";
+    }
+    return new RegExp(curPattern, curFlags);
 }
 exports.parseRegexp = parseRegexp;
 ;
@@ -53,7 +60,7 @@ function grep(data, pattern, highlight) {
         regexp = parseRegexp(pattern);
     }
     else {
-        regexp = new RegExp(pattern, "g");
+        regexp = new RegExp(pattern);
     }
     var lines = data.split(NEWLINE_CHAR);
     /** Собираем валидные строки */
@@ -72,7 +79,8 @@ function grep(data, pattern, highlight) {
             return res[item];
         }, chalk);
         validLines = validLines.map(function (line) {
-            line.str = line.str.replace(regexp, function (str) {
+            var replaceRegexp = parseRegexp("" + regexp, 'g');
+            line.str = line.str.replace(replaceRegexp, function (str) {
                 return highlighter(str);
             });
             return line;

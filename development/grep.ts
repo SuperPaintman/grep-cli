@@ -23,20 +23,26 @@ export function lookLikeRegexp(str: string): boolean {
 /**
  * Разбор строки на регулярное выражение
  * @param  {string}       str
+ * @param  {string}       flags
  * 
  * @return {RegExp}
  */
-export function parseRegexp(str: string): RegExp {
+export function parseRegexp(str: string, flags?: string): RegExp {
     if (!lookLikeRegexp(str)) {
         throw new Error("The string doesn't look like a RegExp");
     }
 
     const matches = str.match(REGEXP_LIKE);
 
-    const pattern = matches[1] ? matches[1] : "";
-    const flags = matches[2] ? matches[2] : "";
+    let curPattern = matches[1] ? matches[1] : "";
+    let curFlags;
+    if (flags) {
+        curFlags = flags;
+    } else {
+        curFlags = matches[2] ? matches[2] : "";
+    }
 
-    return new RegExp(pattern, flags);
+    return new RegExp(curPattern, curFlags);
 };
 
 /**
@@ -55,7 +61,7 @@ export default function grep(data: string, pattern: string, highlight: any = fal
     if (lookLikeRegexp(pattern)) {
         regexp = parseRegexp(pattern);
     } else {
-        regexp = new RegExp(pattern, "g");
+        regexp = new RegExp(pattern);
     }
 
     const lines = data.split(NEWLINE_CHAR);
@@ -79,7 +85,8 @@ export default function grep(data: string, pattern: string, highlight: any = fal
         }, chalk);
 
         validLines = validLines.map((line) => {
-            line.str = line.str.replace(regexp, (str) => {
+            let replaceRegexp = parseRegexp(""+regexp, 'g');
+            line.str = line.str.replace(replaceRegexp, (str) => {
                 return highlighter(str);
             });
 

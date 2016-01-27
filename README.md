@@ -40,6 +40,12 @@ ls | grep "/[0-9]{1,2}:[0-9]{1,2}/i"
 --------------------------------------------------------------------------------
 
 ## Changelog
+### 0.2.0 [`Stable`]
+```diff
++ Added second param into parseRegexp()
++ Added tests
+```
+
 ### 0.1.0 [`Stable`]
 ```diff
 + First realise
