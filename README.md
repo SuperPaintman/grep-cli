@@ -1,4 +1,4 @@
-# grep-cli
+# Grep-cli
 
 [![Linux Build][travis-image]][travis-url]
 [![Windows Build][appveyor-image]][appveyor-url]
@@ -7,7 +7,7 @@
 [![Test Coverage][coveralls-image]][coveralls-url]
 
 
-
+Grep util for **windows**
 
 ## Installation
 ```sh
@@ -16,15 +16,34 @@ npm install -g grep-cli
 
 --------------------------------------------------------------------------------
 
-## Usage
+## Usage CLI
+Use the string as a pattern
 
---------------------------------------------------------------------------------
+```sh
+type package.json | grep start
+# or
+cat package.json | grep start
+```
 
-## API
+![Screenshot](/README/screenshot-1.png)
+
+Or regexp
+
+```sh
+dir | grep "/[0-9]{1,2}:[0-9]{1,2}/i"
+# or
+ls | grep "/[0-9]{1,2}:[0-9]{1,2}/i"
+```
+
+![Screenshot](/README/screenshot-2.png)
 
 --------------------------------------------------------------------------------
 
 ## Changelog
+### 0.1.0 [`Stable`]
+```diff
++ First realise
+```
 
 --------------------------------------------------------------------------------
 

@@ -1,9 +1,8 @@
 'use strict';
-/// <reference path="typings/tds.d.ts"/>
-var os = require("os");
 var chalk = require("chalk");
 /** @todo or \n */
-var NEWLINE_CHAR = os.EOL;
+// const NEWLINE_CHAR = os.EOL;
+var NEWLINE_CHAR = "\n";
 var REGEXP_LIKE = /^\/(.+)\/((g|m|i)*)$/i;
 ;
 /** helps */

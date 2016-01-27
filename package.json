@@ -19,11 +19,15 @@
     "prepublish": "npm run build && npm run test"
   },
   "keywords": [
-    "grep"
+    "grep",
+    "windows",
+    "cli",
+    "search"
   ],
   "files": [
     "development",
     "bin",
+    "README",
     "README.md",
     "tsd.json",
     "tsconfig.json"

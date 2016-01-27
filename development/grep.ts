@@ -6,7 +6,8 @@ import os = require("os");
 import chalk = require("chalk");
 
 /** @todo or \n */
-const NEWLINE_CHAR = os.EOL;
+// const NEWLINE_CHAR = os.EOL;
+const NEWLINE_CHAR = "\n";
 const REGEXP_LIKE = /^\/(.+)\/((g|m|i)*)$/i;
 
 
