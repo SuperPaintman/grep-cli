@@ -1,0 +1,11 @@
+# Modules
+node_modules/
+
+# Typings
+typings/
+
+# Coverage
+coverage/
+
+# Log
+npm-debug.log
