@@ -7,6 +7,15 @@
   "installed": {
     "node/node.d.ts": {
       "commit": "7ce80dafc0df189d61950e80e04548d8304d1538"
+    },
+    "assert/assert.d.ts": {
+      "commit": "7ce80dafc0df189d61950e80e04548d8304d1538"
+    },
+    "mocha/mocha.d.ts": {
+      "commit": "7ce80dafc0df189d61950e80e04548d8304d1538"
+    },
+    "chalk/chalk.d.ts": {
+      "commit": "7ce80dafc0df189d61950e80e04548d8304d1538"
     }
   }
 }
