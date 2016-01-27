@@ -7,7 +7,7 @@
 [![Test Coverage][coveralls-image]][coveralls-url]
 
 
-Grep util for **windows**
+[Grep](https://en.wikipedia.org/wiki/Grep) utility for **windows**.
 
 ## Installation
 ```sh

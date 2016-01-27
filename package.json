@@ -1,7 +1,7 @@
 {
   "name": "grep-cli",
-  "version": "0.1.0",
-  "description": "Grep util for windows",
+  "version": "0.1.1",
+  "description": "Grep utility for windows",
   "main": "bin/grep.js",
   "bin": {
     "grep": "bin/cli/grep.js"
@@ -22,7 +22,9 @@
     "grep",
     "windows",
     "cli",
-    "search"
+    "search",
+    "util",
+    "utility"
   ],
   "files": [
     "development",
